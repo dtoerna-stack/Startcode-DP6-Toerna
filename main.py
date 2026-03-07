@@ -4,6 +4,7 @@ from stap import Stap
 
 def main():
     recepten = []
+    
 
     recept1 = Recept("Kip Kerrie", "Kip kerrie zonder pakjes en zakjes")
     recept1.voeg_ingredient_toe(Ingredient("kip", 500, "gram"))
@@ -21,3 +22,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+
+

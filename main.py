@@ -2,6 +2,8 @@ from recept import Recept
 from ingredient import Ingredient
 from stap import Stap
 from pdf_generator import genereer_pdf
+from database import maak_tabellen, sla_recept_op, laad_recepten, verwijder_recept
+
 
 def toon_keuzemenu():
     print("\n==========================")
@@ -89,6 +91,7 @@ def bevestig_verwijdering(recepten, recept):
         antwoord = input("Weet je het zeker? (ja/nee): ").lower()
         if antwoord == "ja":
             recepten.remove(recept)
+            verwijder_recept(recept.naam)
             print("Recept verwijderd.")
             break
         elif antwoord == "nee":
@@ -241,7 +244,13 @@ def maak_recepten():
 
 
 def main():
-    recepten = maak_recepten()
+    maak_tabellen()
+
+    recepten = laad_recepten()
+    if len(recepten) == 0:
+        recepten = maak_recepten()
+        for recept in recepten:
+            sla_recept_op(recept)
 
     while True:
         toon_keuzemenu()
@@ -256,6 +265,7 @@ def main():
             voeg_ingredienten_toe(nieuw_recept)
             voeg_stappen_toe(nieuw_recept)
             recepten.append(nieuw_recept)
+            sla_recept_op(nieuw_recept)
             print("\nRecept toegevoegd!")
             nieuw_recept.get_plantaardig_recept(False)
         elif keuze == "0":

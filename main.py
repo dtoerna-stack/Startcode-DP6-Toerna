@@ -84,6 +84,61 @@ def bevestig_verwijdering(recepten, recept):
         else:
             print("Foutieve invoer.")
 
+def voeg_ingredienten_toe(recept):
+    while True:
+        naam = input("Naam ingrediënt: ")
+
+        hoeveelheid = ""
+        while hoeveelheid == "":
+            try:
+                hoeveelheid = input("Hoeveelheid (getal): ")
+                float(hoeveelheid)
+            except ValueError:
+                print("Foutieve invoer.")
+                hoeveelheid = ""
+
+        eenheid = input("Eenheid (bijv. gram, ml, el): ")
+
+        kcal = 0
+        while True:
+            try:
+                kcal = int(input("Kcal: "))
+                break
+            except ValueError:
+                print("Foutieve invoer.")
+
+        ingredient = Ingredient(naam, hoeveelheid, eenheid, kcal)
+
+        while True:
+            antwoord = input("Plantaardig alternatief? (ja/nee): ").lower()
+            if antwoord == "ja":
+                alt_naam = input("Naam alternatief: ")
+                alt_kcal = 0
+                while True:
+                    try:
+                        alt_kcal = int(input("Kcal alternatief: "))
+                        break
+                    except ValueError:
+                        print("Foutieve invoer.")
+                alternatief = Ingredient(alt_naam, hoeveelheid, eenheid, alt_kcal)
+                ingredient.set_plantaardig_alternatief(alternatief)
+                break
+            elif antwoord == "nee":
+                break
+            else:
+                print("Foutieve invoer.")
+
+        recept.voeg_ingredient_toe(ingredient)
+
+        while True:
+            antwoord = input("Nog een ingrediënt? (ja/nee): ").lower()
+            if antwoord == "ja":
+                break
+            elif antwoord == "nee":
+                return
+            else:
+                print("Foutieve invoer.")
+
 def main():
     recepten = maak_recepten()
 

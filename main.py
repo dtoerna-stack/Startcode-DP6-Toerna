@@ -62,6 +62,28 @@ def toon_overzicht(recepten):
         except ValueError:
             print("Foutieve invoer.")
 
+    while True:
+        antwoord = input("\nRecept verwijderen of terug? (verwijderen/home): ").lower()
+        if antwoord == "verwijderen":
+            bevestig_verwijdering(recepten, gekozen_recept)
+            break
+        elif antwoord == "home":
+            break
+        else:
+            print("Foutieve invoer.") 
+    
+def bevestig_verwijdering(recepten, recept):
+    while True:
+        antwoord = input("Weet je het zeker? (ja/nee): ").lower()
+        if antwoord == "ja":
+            recepten.remove(recept)
+            print("Recept verwijderd.")
+            break
+        elif antwoord == "nee":
+            break
+        else:
+            print("Foutieve invoer.")
+
 def main():
     recepten = maak_recepten()
 

@@ -1,7 +1,7 @@
 from recept import Recept
 from ingredient import Ingredient
 from stap import Stap
-
+from pdf_generator import genereer_pdf
 
 def toon_keuzemenu():
     print("\n==========================")
@@ -62,6 +62,16 @@ def toon_overzicht(recepten):
             print("Foutieve invoer.")
 
     gekozen_recept.get_plantaardig_recept(plantaardig)
+
+    while True:
+        antwoord = input("PDF genereren? (ja/nee): ").lower()
+        if antwoord == "ja":
+            genereer_pdf(gekozen_recept, plantaardig)
+            break
+        elif antwoord == "nee":
+            break
+        else:
+            print("Foutieve invoer.")
 
     while True:
         antwoord = input("\nRecept verwijderen of terug? (verwijderen/home): ").lower()

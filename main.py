@@ -23,13 +23,13 @@ def main():
 
      # Recept 2
     r2 = Recept("Lasagna", "Klassieke ovenschotel met gehakt, tomatensaus en bechamelsaus.")
-    r2.voeg_ingredient_toe(Ingredient("lasagnebladen", "4"))
-    r2.voeg_ingredient_toe(Ingredient("gehakt", "150g"))
-    r2.voeg_ingredient_toe(Ingredient("tomatensaus", "150ml"))
-    r2.voeg_ingredient_toe(Ingredient("melk", "200ml"))
-    r2.voeg_ingredient_toe(Ingredient("bloem", "1 el"))
-    r2.voeg_ingredient_toe(Ingredient("boter", "1 el"))
-    r2.voeg_ingredient_toe(Ingredient("geraspte kaas", "50g"))
+    r2.voeg_ingredient_toe(Ingredient("lasagnebladen", "4", "stuks"))
+    r2.voeg_ingredient_toe(Ingredient("gehakt", "150", "gram"))
+    r2.voeg_ingredient_toe(Ingredient("tomatensaus", "150", "ml"))
+    r2.voeg_ingredient_toe(Ingredient("melk", "200", "ml"))
+    r2.voeg_ingredient_toe(Ingredient("bloem", "1", "el"))
+    r2.voeg_ingredient_toe(Ingredient("boter", "1", "el"))
+    r2.voeg_ingredient_toe(Ingredient("geraspte kaas", "50", "gram"))
     r2.voeg_ingredient_toe(Ingredient("zout en peper", "2", "snufjes"))
     r2.voeg_stap_toe(Stap("Verwarm de oven voor op 200 graden."))
     r2.voeg_stap_toe(Stap("Bak het gehakt rul en voeg de tomatensaus toe."))
@@ -38,8 +38,23 @@ def main():
     r2.voeg_stap_toe(Stap("Eindig met bechamelsaus en strooi de kaas erover."))
     r2.voeg_stap_toe(Stap("Bak 30 minuten in de oven tot de bovenkant goudbruin is."))
 
+    # Recept 3
+    r3 = Recept("Stampot met Rookworst", "Hollandse klassieker met aardappel, boerenkool en rookworst.")
+    r3.voeg_ingredient_toe(Ingredient("aardappelen", "300", "gram"))
+    r3.voeg_ingredient_toe(Ingredient("boerenkool", "100", "gram"))
+    r3.voeg_ingredient_toe(Ingredient("rookworst", "1/2", "stuks"))
+    r3.voeg_ingredient_toe(Ingredient("melk", "3", "el"))
+    r3.voeg_ingredient_toe(Ingredient("boter", "1", "el"))
+    r3.voeg_ingredient_toe(Ingredient("zout en peper", "2", "snufjes"))
+    r3.voeg_stap_toe(Stap("Schil de aardappelen en kook ze gaar in gezouten water."))
+    r3.voeg_stap_toe(Stap("Voeg de boerenkool de laatste 5 minuten mee toe aan het kookwater."))
+    r3.voeg_stap_toe(Stap("Verwarm de rookworst in warm water volgens de verpakking."))
+    r3.voeg_stap_toe(Stap("Giet de aardappelen en boerenkool af en stamp ze fijn."))
+    r3.voeg_stap_toe(Stap("Voeg melk en boter toe en stamp tot een smeuige stampot."))
+    r3.voeg_stap_toe(Stap("Breng op smaak met zout en peper en serveer met de rookworst."))
+
 # Lijst tonen
-    recepten = [r1, r2]
+    recepten = [r1, r2, r3]
 
     print("Welkom in het receptenboek!")
     print("==========================")
